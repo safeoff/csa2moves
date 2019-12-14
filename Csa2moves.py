@@ -8,7 +8,6 @@ def checkpro(move):
 
 # 指し手 to usiのmoves
 def moves2usi(pieces):
-	usi = []
 	piecemap = {
 		"FU": "P",
 		"KE": "N",
@@ -30,6 +29,8 @@ def moves2usi(pieces):
 	# fr移動元 + to移動先 + pro成るかどうか
 	# x列は数値をアルファベットに変換
 	# 成り駒かどうかは、合法手かどうかで判断する
+	usis = []
+	sfens = []
 	board = shogi.Board()
 	for i, piece in enumerate(pieces):
 		# x列は数値をアルファベットに変換
@@ -45,9 +46,10 @@ def moves2usi(pieces):
 			if shogi.Move.from_usi(fr + to + "+") in board.legal_moves:
 				pro = "+"
 
+		sfens.append(board.sfen())
 		board.push_usi(fr + to + pro)
-		usi.append(fr + to + pro)
-	return usi
+		usis.append(fr + to + pro)
+	return [usis, sfens]
 
 
 def csa2moves(kif):
