@@ -13,7 +13,7 @@ class TestCsa2moves(unittest.TestCase):
 		# act
 		result = Csa2moves.csa2moves(pattern)
 		# assert
-		self.assertEqual(''.join(result), ''.join(expected_value))
+		self.assertEqual(''.join(result[0][0]), ''.join(expected_value))
 
 	# ウォーズの棋譜を変換するテスト
 	# 成りの場合は+がつく
@@ -24,7 +24,7 @@ class TestCsa2moves(unittest.TestCase):
 		# act
 		result = Csa2moves.csa2moves(pattern)
 		# assert
-		self.assertEqual(''.join(result), ''.join(expected_value))
+		self.assertEqual(''.join(result[0][0]), ''.join(expected_value))
 
 	# ウォーズの棋譜を変換するテスト
 	# 成駒を移動しても+はつかない
@@ -35,4 +35,4 @@ class TestCsa2moves(unittest.TestCase):
 		# act
 		result = Csa2moves.csa2moves(pattern)
 		# assert
-		self.assertEqual(''.join(result), ''.join(expected_value))
+		self.assertEqual(''.join(result[0][0]), ''.join(expected_value))

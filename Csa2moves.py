@@ -58,12 +58,14 @@ def csa2moves(kif):
 	moves = moves.split('\t')
 	moves.pop(-1)
 
-	# 移動元/移動先/駒にバラす
+	# 移動元/移動先/駒、時間にバラす
 	pieces = []
+	times = []
 	for move in moves:
 		pieces.append([move[1:3], move[3:5], move[5:7]])
+		times.append(int(move.split(",")[1][1:]))
 
 	# 指し手 to usiのmoves
 	usi = moves2usi(pieces)
 
-	return usi
+	return usi, times
